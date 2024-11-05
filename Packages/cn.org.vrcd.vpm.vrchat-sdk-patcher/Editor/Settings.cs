@@ -11,6 +11,7 @@ namespace VRCD.VRChatPackages.VRChatSDKPatcher.Editor
         public string HttpProxyUri { get; set; } = "";
 
         public bool ReplaceUploadUrl { get; set; } = true;
+        public string ReplaceUploadUrlText { get; set; } = "api.vrchat.cloud";
 
         public const string SettingsFileName = "settings.json";
 

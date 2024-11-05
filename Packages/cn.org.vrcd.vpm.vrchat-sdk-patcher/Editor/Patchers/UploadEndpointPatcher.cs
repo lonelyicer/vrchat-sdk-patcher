@@ -48,12 +48,14 @@ namespace VRCD.VRChatPackages.VRChatSDKPatcher.Editor.Patchers
 
             // uploadUrl = uploadUrl.Replace("//vrchat.com", "//api.vrchat.cloud");
 
+            var settings = Settings.LoadSettings();
+
             var instructionsToInsert = new List<CodeInstruction>();
             instructionsToInsert.Add(new CodeInstruction(OpCodes.Ldarg_0));
             instructionsToInsert.Add(new CodeInstruction(OpCodes.Ldarg_0));
             instructionsToInsert.Add(new CodeInstruction(OpCodes.Ldfld, uploadUrlField));
             instructionsToInsert.Add(new CodeInstruction(OpCodes.Ldstr, "//vrchat.com"));
-            instructionsToInsert.Add(new CodeInstruction(OpCodes.Ldstr, "//api.vrchat.cloud"));
+            instructionsToInsert.Add(new CodeInstruction(OpCodes.Ldstr, "//" + settings.ReplaceUploadUrlText));
             instructionsToInsert.Add(new CodeInstruction(OpCodes.Callvirt, AccessTools.Method(typeof(String), nameof(string.Replace), new Type[] {typeof(string), typeof(string)})));
             instructionsToInsert.Add(new CodeInstruction(OpCodes.Stfld, uploadUrlField));
 

@@ -15,6 +15,7 @@ namespace VRCD.VRChatPackages.VRChatSDKPatcher.Editor.Editor.Views
         private Toggle _useProxyToggle;
 
         private Toggle _replaceUploadUrlToggle;
+        private TextField _replaceUploadUrlField;
 
         private Button _reloadSdkButton;
 
@@ -38,6 +39,7 @@ namespace VRCD.VRChatPackages.VRChatSDKPatcher.Editor.Editor.Views
             _useProxyToggle = content.Query<Toggle>("proxy-toggle").First();
 
             _replaceUploadUrlToggle = content.Query<Toggle>("replace-upload-url-toggle").First();
+            _replaceUploadUrlField = content.Query<TextField>("replace-upload-url-field").First();
 
             _reloadSdkButton = content.Query<Button>("reload-sdk-button").First();
 
@@ -47,6 +49,7 @@ namespace VRCD.VRChatPackages.VRChatSDKPatcher.Editor.Editor.Views
             _useProxyToggle.RegisterValueChangedCallback(_ => SaveSettings());
 
             _replaceUploadUrlToggle.RegisterValueChangedCallback(_ => SaveSettings());
+            _replaceUploadUrlField.RegisterValueChangedCallback(_ => SaveSettings());
 
             _reloadSdkButton.clicked += () => ReloadUtil.ReloadSDK();
         }
@@ -59,6 +62,7 @@ namespace VRCD.VRChatPackages.VRChatSDKPatcher.Editor.Editor.Views
             _httpProxyUriField.value = _settings.HttpProxyUri;
 
             _replaceUploadUrlToggle.value = _settings.ReplaceUploadUrl;
+            _replaceUploadUrlField.value = _settings.ReplaceUploadUrlText;
         }
 
         private void SaveSettings()
@@ -67,6 +71,7 @@ namespace VRCD.VRChatPackages.VRChatSDKPatcher.Editor.Editor.Views
             _settings.HttpProxyUri = _httpProxyUriField.value;
 
             _settings.ReplaceUploadUrl = _replaceUploadUrlToggle.value;
+            _settings.ReplaceUploadUrlText = _replaceUploadUrlField.value;
 
             _settings.Save();
         }

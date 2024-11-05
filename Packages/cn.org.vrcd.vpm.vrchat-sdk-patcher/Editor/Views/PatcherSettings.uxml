@@ -20,7 +20,8 @@
         <engine:Label class="section-title" text="Others" />
         <engine:HelpBox text="Change these settings require reload VRChat SDK" message-type="Warning"/>
         <engine:Toggle name="replace-upload-url-toggle"
-                       text="Replace 'vrchat.com' in upload url to 'api.vrchat.cloud' when upload" />
+                       text="Replace 'vrchat.com' in upload url to your api url when upload" />
+        <engine:TextField name="replace-upload-url-field" label="API Url" />
         <engine:Button name="reload-sdk-button" text="Reload VRChat SDK" />
     </engine:VisualElement>
 </engine:UXML>
